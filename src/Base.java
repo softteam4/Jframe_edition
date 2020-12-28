@@ -21,16 +21,40 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 
-public class Base extends JFrame implements ActionListener{
-    ArrayList<JTextField> textList = new ArrayList<>();
-
-    JPanel todoPanel =new JPanel();
+public class Base extends JFrame{
     public static void main(String args[]){
         Base frame = new Base("Todo");
         frame.setVisible(true);
     }
 
+    void pushAdd(ArrayList<JPanel> cardList,JPanel todoPanel){
+        JPanel textPanel = new JPanel();
+        JTextField todoText = new JTextField(20);
+        JButton removeButton = new JButton("削除");
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //削除ボタンが押された時
+                textPanel.setVisible(false);
+            }
+        });
+        textPanel.add(removeButton);
+        textPanel.add(todoText);
+        todoPanel.add(textPanel);
+        todoPanel.updateUI();
+        cardList.add(0,textPanel);
+    }
+
+
+
+
+
+
+
     Base(String title){
+        ArrayList<JPanel> cardList = new ArrayList<>();
+        JPanel todoPanel =new JPanel();
+
         setTitle(title);
         setBounds(100, 100, 600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,11 +72,17 @@ public class Base extends JFrame implements ActionListener{
 
         //TODOパネル
 
-        JLabel todoLabel = new JLabel("新規リスト");
+        JLabel todoLabel = new JLabel("マイリストからリスト名を持ってくる");
         todoPanel.setBackground(Color.ORANGE);
         todoPanel.add(todoLabel);
         JButton todoButton = new JButton("+");
-        todoButton.addActionListener(this);
+        todoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pushAdd(cardList,todoPanel);
+            }
+        });
+        todoButton.setActionCommand("btn1");
         todoPanel.add(todoButton);
 
 
@@ -63,10 +93,7 @@ public class Base extends JFrame implements ActionListener{
 
 
     }
-    public void actionPerformed(ActionEvent e){
-        JTextField todoText = new JTextField(20);
-        todoPanel.add(todoText);
-        todoPanel.updateUI();
-        textList.add(0,todoText);
-    }
+
 }
+
+
