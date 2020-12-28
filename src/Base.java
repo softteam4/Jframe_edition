@@ -18,9 +18,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
-public class Base extends JFrame{
+public class Base extends JFrame implements ActionListener{
+    ArrayList<JTextField> textList = new ArrayList<>();
+
+    JPanel todoPanel =new JPanel();
     public static void main(String args[]){
         Base frame = new Base("Todo");
         frame.setVisible(true);
@@ -43,10 +47,12 @@ public class Base extends JFrame{
         menuPanel.add(folderButton,BorderLayout.SOUTH);
 
         //TODOパネル
-        JPanel todoPanel =new JPanel();
+
         JLabel todoLabel = new JLabel("新規リスト");
+        todoPanel.setBackground(Color.ORANGE);
         todoPanel.add(todoLabel);
         JButton todoButton = new JButton("+");
+        todoButton.addActionListener(this);
         todoPanel.add(todoButton);
 
 
@@ -56,5 +62,11 @@ public class Base extends JFrame{
 
 
 
+    }
+    public void actionPerformed(ActionEvent e){
+        JTextField todoText = new JTextField(20);
+        todoPanel.add(todoText);
+        todoPanel.updateUI();
+        textList.add(0,todoText);
     }
 }
