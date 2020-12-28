@@ -27,22 +27,9 @@ public class Base extends JFrame{
         frame.setVisible(true);
     }
 
-    void pushAdd(ArrayList<JPanel> cardList,JPanel todoPanel){
-        Card cardPanel = new Card();
-        todoPanel.add(cardPanel);
-        todoPanel.updateUI();
-        cardList.add(0,cardPanel);
-    }
-
-
-
-
-
-
 
     Base(String title){
-        ArrayList<JPanel> cardList = new ArrayList<>();
-        JPanel todoPanel =new JPanel();
+        TodoList todolist =new TodoList();
 
         setTitle(title);
         setBounds(100, 100, 600, 400);
@@ -59,25 +46,14 @@ public class Base extends JFrame{
         JButton folderButton = new JButton("リスト作成");
         menuPanel.add(folderButton,BorderLayout.SOUTH);
 
-        //TODOパネル
 
-        JLabel todoLabel = new JLabel("マイリストからリスト名を持ってくる");
-        todoPanel.setBackground(Color.ORANGE);
-        todoPanel.add(todoLabel);
-        JButton todoButton = new JButton("+");
-        todoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pushAdd(cardList,todoPanel);
-            }
-        });
-        todoButton.setActionCommand("btn1");
-        todoPanel.add(todoButton);
+
+
 
 
         Container contentPane = getContentPane();
         contentPane.add(menuPanel,BorderLayout.LINE_START);
-        contentPane.add(todoPanel,BorderLayout.CENTER);
+        contentPane.add(todolist,BorderLayout.CENTER);
 
 
 
