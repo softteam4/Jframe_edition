@@ -28,21 +28,10 @@ public class Base extends JFrame{
     }
 
     void pushAdd(ArrayList<JPanel> cardList,JPanel todoPanel){
-        JPanel textPanel = new JPanel();
-        JTextField todoText = new JTextField(20);
-        JButton removeButton = new JButton("削除");
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //削除ボタンが押された時
-                textPanel.setVisible(false);
-            }
-        });
-        textPanel.add(removeButton);
-        textPanel.add(todoText);
-        todoPanel.add(textPanel);
+        Card cardPanel = new Card();
+        todoPanel.add(cardPanel);
         todoPanel.updateUI();
-        cardList.add(0,textPanel);
+        cardList.add(0,cardPanel);
     }
 
 
