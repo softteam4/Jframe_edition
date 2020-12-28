@@ -30,12 +30,12 @@ public class Base extends JFrame{
 
     Base(String title){
         TodoList todolist =new TodoList();
+        ArrayList<TodoList> listList = new ArrayList<TodoList>(); //TodoListのリスト
 
         setTitle(title);
         setBounds(100, 100, 600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-
 
         //メニューバー
         JPanel menuPanel =new JPanel(new BorderLayout());
@@ -46,17 +46,9 @@ public class Base extends JFrame{
         JButton folderButton = new JButton("リスト作成");
         menuPanel.add(folderButton,BorderLayout.SOUTH);
 
-
-
-
-
-
         Container contentPane = getContentPane();
         contentPane.add(menuPanel,BorderLayout.LINE_START);
         contentPane.add(todolist,BorderLayout.CENTER);
-
-
-
     }
 
 }
