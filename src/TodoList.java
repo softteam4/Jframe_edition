@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class TodoList extends JPanel {
     TodoList(){
     listTitle = "タイトル";
-
     cardList = new ArrayList<>();
     listTitleLabel = new JLabel(listTitle);
     addButton = new JButton("+");
@@ -22,7 +21,6 @@ public class TodoList extends JPanel {
     this.add(addButton);
 
     }
-
     String listTitle;
     ArrayList<Card> cardList;
     JLabel listTitleLabel;

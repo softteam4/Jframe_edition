@@ -22,7 +22,6 @@ public class Card extends JPanel {
         main_panel.add(title);
         this.add(main_panel, BorderLayout.CENTER);
         this.add(deadline, BorderLayout.SOUTH);
-        //this.getContentPane().add(sp);
     }
 
     JTextField title;
@@ -30,8 +29,5 @@ public class Card extends JPanel {
 
     JPanel main_panel;
     Module_deadline deadline;
-
-    JScrollPane sp = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     //JTextArea memo;
-    //DeleteButton deleteButton ?
 }
