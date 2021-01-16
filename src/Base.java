@@ -24,7 +24,7 @@ public class Base extends JFrame{
 
     Base(String title){
         TodoList todolist =new TodoList();
-        ArrayList<TodoList> listList = new ArrayList<TodoList>(); //TodoListのリスト
+        listList = new ArrayList<TodoList>(); //TodoListのリスト
 
         setTitle(title);
         setBounds(100, 100, 1200, 800);
@@ -32,17 +32,50 @@ public class Base extends JFrame{
         setLayout(new BorderLayout());
 
         //メニューバー
-        JPanel menuPanel =new JPanel(new BorderLayout());
-        menuPanel.setPreferredSize(new Dimension(200, 200));
-        JLabel menuLabel = new JLabel("マイリスト");
+        menuPanel =new JPanel(new BorderLayout());
         menuPanel.setBackground(Color.GRAY);
-        menuPanel.add(menuLabel,BorderLayout.NORTH);
-        JButton folderButton = new JButton("リスト作成");
-        menuPanel.add(folderButton,BorderLayout.SOUTH);
+        menuPanel.setPreferredSize(new Dimension(400, 200));
 
+        //タイトル
+        menuLabel = new JLabel("マイリスト");
+        menuPanel.add(menuLabel,BorderLayout.NORTH);
+
+        //タイトル追加ボタン
+        folderButton = new JButton("リスト作成");
+        folderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addTitle(listList);
+            }
+        });
+
+
+        listArea = new JPanel();
+
+        //パネルに追加
+        menuPanel.add(folderButton,BorderLayout.SOUTH);
+        menuPanel.add(listArea,BorderLayout.CENTER);
+
+        //追加
         Container contentPane = getContentPane();
         contentPane.add(menuPanel,BorderLayout.LINE_START);
         contentPane.add(todolist,BorderLayout.CENTER);
+    }
+
+
+    ArrayList<TodoList> listList;
+    JPanel menuPanel;
+    JLabel menuLabel;
+    JButton folderButton;
+    JTextField baseTitle;
+    JPanel listArea;
+
+
+    void addTitle(ArrayList<TodoList> list){
+        baseTitle = new JTextField(20);
+        listArea.add(baseTitle);
+        listArea.updateUI();
+        //list.add(0,);
     }
 
 }
