@@ -34,7 +34,7 @@ public class Base extends JFrame{
         //メニューバー
         menuPanel =new JPanel(new BorderLayout());
         menuPanel.setBackground(Color.GRAY);
-        menuPanel.setPreferredSize(new Dimension(400, 200));
+        menuPanel.setPreferredSize(new Dimension(300, 200));
 
         //タイトル
         menuLabel = new JLabel("マイリスト");
@@ -49,8 +49,9 @@ public class Base extends JFrame{
             }
         });
 
-
+        //テキストボックス用のパネル
         listArea = new JPanel();
+        listArea.setBackground(Color.GRAY);
 
         //パネルに追加
         menuPanel.add(folderButton,BorderLayout.SOUTH);
