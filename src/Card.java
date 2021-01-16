@@ -25,7 +25,19 @@ public class Card extends JPanel {
         removeCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                if(removeCB.isSelected()){
+                    if(title_label.isVisible()==false){
+                        defineButton.doClick();
+                    }
+                    title_label.setForeground(Color.GRAY);
+                    additional_module.date_label.setForeground(Color.GRAY);
+                    additional_module.memo_label.setForeground(Color.GRAY);
+
+                } else {
+                    title_label.setForeground(Color.BLACK);
+                    additional_module.date_label.setForeground(Color.BLACK);
+                    additional_module.memo_label.setForeground(Color.BLACK);
+                }
             }
         });
 
@@ -70,6 +82,7 @@ public class Card extends JPanel {
     JPanel change_panel;
 
     void modeChange(String mode){
+        String date_string = String.valueOf(additional_module.month.getSelectedItem())+additional_module.gatsu.getText()+ String.valueOf(additional_module.day.getSelectedItem()) +additional_module.nichi.getText();
         switch(mode){
             case "clickEdit":
                 defineButton.setVisible(true);
@@ -83,8 +96,13 @@ public class Card extends JPanel {
 
                 additional_module.month.setVisible(true);
                 additional_module.day.setVisible(true);
+                additional_module.gatsu.setVisible(true);
+                additional_module.nichi.setVisible(true);
+                additional_module.date_label.setVisible(false);
+                /*
                 additional_module.month_label.setVisible(false);
                 additional_module.day_label.setVisible(false);
+                 */
                 break;
 
             case "clickDefine":
@@ -101,11 +119,18 @@ public class Card extends JPanel {
 
                 additional_module.month.setVisible(false);
                 additional_module.day.setVisible(false);
+                additional_module.gatsu.setVisible(false);
+                additional_module.nichi.setVisible(false);
+                additional_module.date_label.setVisible(true);
+                additional_module.date_label.setText(date_string);
+                /*
                 additional_module.month_label.setVisible(true);
                 additional_module.day_label.setVisible(true);
                 additional_module.month_label.setText(String.valueOf(additional_module.month.getSelectedItem()));
                 additional_module.day_label.setText(String.valueOf(additional_module.day.getSelectedItem()));
+                */
                 break;
+
         }
     }
 }
