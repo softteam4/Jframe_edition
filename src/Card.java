@@ -5,12 +5,13 @@ import java.awt.event.ActionListener;
 
 public class Card extends JPanel {
     Card(){
-        this.setLayout(new BorderLayout());
         additional_module = new Module_deadline();
         main_panel = new JPanel();
+        change_panel = new JPanel();
 
         title = new JTextField(20);
-        removeButton = new JButton("削除");
+        //removeButton = new JButton("削除");
+        removeCB = new JCheckBox();
 
         title_label = new JLabel();
         title_label.setVisible(false);
@@ -21,7 +22,7 @@ public class Card extends JPanel {
 
 
 
-        removeButton.addActionListener(new ActionListener() {
+        removeCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
@@ -42,25 +43,31 @@ public class Card extends JPanel {
             }
         });
 
-        main_panel.add(removeButton);
-        main_panel.add(defineButton);
-        main_panel.add(editButton);
+        //main_panel.add(removeButton);
+        main_panel.add(removeCB);
         main_panel.add(title);
         main_panel.add(title_label);
-        this.add(main_panel, BorderLayout.CENTER);
-        this.add(additional_module, BorderLayout.SOUTH);
+
+        change_panel.add(defineButton);
+        change_panel.add(editButton);
+
+        this.add(main_panel);
+        this.add(additional_module);
+        this.add(change_panel);
     }
 
     JTextField title;
     JLabel title_label;
 
     JButton removeButton;
+    JCheckBox removeCB;
     //JButton completeButton; 完了ボタン（仮）
     JButton editButton;
     JButton defineButton;
 
     JPanel main_panel;
     Module_deadline additional_module;
+    JPanel change_panel;
 
     void modeChange(String mode){
         switch(mode){
