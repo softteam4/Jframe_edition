@@ -11,7 +11,7 @@ public class Card extends JPanel {
 
         title = new JTextField(20);
         //removeButton = new JButton("削除");
-        removeCB = new JCheckBox();
+        checkBox = new JCheckBox();
 
         title_label = new JLabel();
         title_label.setVisible(false);
@@ -22,10 +22,10 @@ public class Card extends JPanel {
 
 
 
-        removeCB.addActionListener(new ActionListener() {
+        checkBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(removeCB.isSelected()){
+                if(checkBox.isSelected()){
                     if(title_label.isVisible()==false){
                         defineButton.doClick();
                     }
@@ -55,8 +55,7 @@ public class Card extends JPanel {
             }
         });
 
-        //main_panel.add(removeButton);
-        main_panel.add(removeCB);
+        main_panel.add(checkBox);
         main_panel.add(title);
         main_panel.add(title_label);
 
@@ -71,9 +70,7 @@ public class Card extends JPanel {
     JTextField title;
     JLabel title_label;
 
-    JButton removeButton;
-    JCheckBox removeCB;
-    //JButton completeButton; 完了ボタン（仮）
+    JCheckBox checkBox;
     JButton editButton;
     JButton defineButton;
 
@@ -99,10 +96,6 @@ public class Card extends JPanel {
                 additional_module.gatsu.setVisible(true);
                 additional_module.nichi.setVisible(true);
                 additional_module.date_label.setVisible(false);
-                /*
-                additional_module.month_label.setVisible(false);
-                additional_module.day_label.setVisible(false);
-                 */
                 break;
 
             case "clickDefine":
@@ -123,12 +116,6 @@ public class Card extends JPanel {
                 additional_module.nichi.setVisible(false);
                 additional_module.date_label.setVisible(true);
                 additional_module.date_label.setText(date_string);
-                /*
-                additional_module.month_label.setVisible(true);
-                additional_module.day_label.setVisible(true);
-                additional_module.month_label.setText(String.valueOf(additional_module.month.getSelectedItem()));
-                additional_module.day_label.setText(String.valueOf(additional_module.day.getSelectedItem()));
-                */
                 break;
 
         }

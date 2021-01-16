@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 
@@ -8,7 +9,7 @@ public class TodoList extends JPanel {
     TodoList(){
         this.setLayout(new BorderLayout());
 
-        //タイトルパネル　：タイトル　＋：
+        //タイトルパネル　：タイトル　＋ 削除：
         titlePanel = new JPanel();
         listTitle = "タイトル";
         listTitleLabel = new JLabel(listTitle);
@@ -17,9 +18,13 @@ public class TodoList extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pushAdd(cardList);
-                //Card.class側で削除されたカードの削除
-                //Card.class側では不可視にしただけで消えていない
-                checkDeletedCard();
+            }
+        });
+        deleteButton = new JButton("削除");
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pushDelete();
             }
         });
 
@@ -33,6 +38,7 @@ public class TodoList extends JPanel {
         //パネルに追加
         titlePanel.add(listTitleLabel);
         titlePanel.add(addButton);
+        titlePanel.add(deleteButton);
         this.add(titlePanel,BorderLayout.NORTH);
         this.add(cardArea,BorderLayout.CENTER);
 
@@ -41,7 +47,10 @@ public class TodoList extends JPanel {
     String listTitle;
     ArrayList<Card> cardList;
     JLabel listTitleLabel;
+
     JButton addButton;
+    JButton deleteButton;
+
     JPanel titlePanel;
     JPanel cardArea;
 
@@ -53,11 +62,11 @@ public class TodoList extends JPanel {
         cardList.add(0,cardPanel);
     }
 
-    //Card.class側で削除されたカードの削除
-    void checkDeletedCard(){
+    void pushDelete(){
         for(Card card : cardList){
-            if(card.isVisible() == false){
-                cardList.remove(card);
+            if(card.checkBox.isSelected()){
+                card.setVisible(false);
+                //cardList.remove(card);
             }
         }
     }
