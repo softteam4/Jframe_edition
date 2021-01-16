@@ -5,7 +5,9 @@ public class Module_deadline extends JPanel {
     Module_deadline(){
         month = new JComboBox(month_data);
         day = new JComboBox(day_data);
+        memo = new JTextField(15);
 
+        this.add(memo);
         this.add(month);
         this.add(new JLabel("月"));
         this.add(day);
@@ -13,6 +15,7 @@ public class Module_deadline extends JPanel {
     }
 
 
+    JTextField memo;
     JComboBox month;
     JComboBox day;
     String[] month_data = {"1","2","3","4","5","6","7","8","9","10","11","12"};
