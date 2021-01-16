@@ -27,7 +27,7 @@ public class Base extends JFrame{
         ArrayList<TodoList> listList = new ArrayList<TodoList>(); //TodoListのリスト
 
         setTitle(title);
-        setBounds(100, 100, 200, 800);
+        setBounds(100, 100, 1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
