@@ -17,14 +17,17 @@ public class TodoList extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pushAdd(cardList);
+                //Card.class側で削除されたカードの削除
+                //Card.class側では不可視にしただけで消えていない
+                checkDeletedCard();
             }
         });
+
+
 
         //カードについて
         cardArea = new JPanel();
         cardList = new ArrayList<>();
-
-
 
 
         //パネルに追加
@@ -48,6 +51,15 @@ public class TodoList extends JPanel {
         cardArea.add(cardPanel);
         cardArea.updateUI();
         cardList.add(0,cardPanel);
+    }
+
+    //Card.class側で削除されたカードの削除
+    void checkDeletedCard(){
+        for(Card card : cardList){
+            if(card.isVisible() == false){
+                cardList.remove(card);
+            }
+        }
     }
 
 
