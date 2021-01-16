@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Card extends JPanel {
     Card(){
         this.setLayout(new BorderLayout());
-        deadline = new Module_deadline();
+        additional_module = new Module_deadline();
         main_panel = new JPanel();
 
         title = new JTextField(20);
@@ -48,7 +48,7 @@ public class Card extends JPanel {
         main_panel.add(title);
         main_panel.add(title_label);
         this.add(main_panel, BorderLayout.CENTER);
-        this.add(deadline, BorderLayout.SOUTH);
+        this.add(additional_module, BorderLayout.SOUTH);
     }
 
     JTextField title;
@@ -60,23 +60,44 @@ public class Card extends JPanel {
     JButton defineButton;
 
     JPanel main_panel;
-    Module_deadline deadline;
+    Module_deadline additional_module;
 
     void modeChange(String mode){
         switch(mode){
             case "clickEdit":
                 defineButton.setVisible(true);
                 editButton.setVisible(false);
+
                 title.setVisible(true);
                 title_label.setVisible(false);
+
+                additional_module.memo.setVisible(true);
+                additional_module.memo_label.setVisible(false);
+
+                additional_module.month.setVisible(true);
+                additional_module.day.setVisible(true);
+                additional_module.month_label.setVisible(false);
+                additional_module.day_label.setVisible(false);
                 break;
 
             case "clickDefine":
                 defineButton.setVisible(false);
                 editButton.setVisible(true);
+
                 title.setVisible(false);
                 title_label.setVisible(true);
                 title_label.setText(title.getText());
+
+                additional_module.memo.setVisible(false);
+                additional_module.memo_label.setVisible(true);
+                additional_module.memo_label.setText(additional_module.memo.getText());
+
+                additional_module.month.setVisible(false);
+                additional_module.day.setVisible(false);
+                additional_module.month_label.setVisible(true);
+                additional_module.day_label.setVisible(true);
+                additional_module.month_label.setText(String.valueOf(additional_module.month.getSelectedItem()));
+                additional_module.day_label.setText(String.valueOf(additional_module.day.getSelectedItem()));
                 break;
         }
     }
