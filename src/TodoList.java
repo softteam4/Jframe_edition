@@ -6,34 +6,50 @@ import java.awt.event.ActionListener;
 
 public class TodoList extends JPanel {
     TodoList(){
-    listTitle = "タイトル";
-    cardList = new ArrayList<>();
-    listTitleLabel = new JLabel(listTitle);
-    addButton = new JButton("+");
-    addButton.addActionListener(new ActionListener(){
-        @Override
+        this.setLayout(new BorderLayout());
+
+        //タイトルパネル　：タイトル　＋：
+        titlePanel = new JPanel();
+        listTitle = "タイトル";
+        listTitleLabel = new JLabel(listTitle);
+        addButton = new JButton("+");
+        addButton.addActionListener(new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e) {
                 pushAdd(cardList);
             }
         });
 
-    this.add(listTitleLabel);
-    this.add(addButton);
+        //カードについて
+        cardArea = new JPanel();
+        cardList = new ArrayList<>();
+
+
+
+
+        //パネルに追加
+        titlePanel.add(listTitleLabel);
+        titlePanel.add(addButton);
+        this.add(titlePanel,BorderLayout.NORTH);
+        this.add(cardArea,BorderLayout.CENTER);
 
     }
+
     String listTitle;
     ArrayList<Card> cardList;
     JLabel listTitleLabel;
     JButton addButton;
+    JPanel titlePanel;
+    JPanel cardArea;
+
 
     void pushAdd(ArrayList<Card> cardList){
         Card cardPanel = new Card();
-        this.add(cardPanel);
-        this.updateUI();
+        cardArea.add(cardPanel);
+        cardArea.updateUI();
         cardList.add(0,cardPanel);
     }
 
 
 
 }
-
