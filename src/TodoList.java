@@ -11,8 +11,7 @@ public class TodoList extends JPanel {
 
         //タイトルパネル　：タイトル　＋ 削除：
         titlePanel = new JPanel();
-        listTitle = "タイトル";
-        listTitleLabel = new JLabel(listTitle);
+        listTitleLabel = new JLabel();
         addButton = new JButton("+");
         addButton.addActionListener(new ActionListener(){
             @Override
@@ -44,7 +43,7 @@ public class TodoList extends JPanel {
 
     }
 
-    String listTitle;
+
     ArrayList<Card> cardList;
     JLabel listTitleLabel;
 

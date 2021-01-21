@@ -23,7 +23,6 @@ public class Base extends JFrame{
 
 
     Base(String title) {
-        TodoList todolist = new TodoList();
         listList = new ArrayList<TodoTitle>(); //TodoListのリスト
 
         setTitle(title);
@@ -45,7 +44,7 @@ public class Base extends JFrame{
         folderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addTitle(listList);
+                addTitle(listList,getContentPane());
             }
         });
 
@@ -73,7 +72,6 @@ public class Base extends JFrame{
         //追加
         Container contentPane = getContentPane();
         contentPane.add(menuPanel,BorderLayout.LINE_START);
-        contentPane.add(todolist,BorderLayout.CENTER);
     }
 
 
@@ -87,16 +85,20 @@ public class Base extends JFrame{
     JPanel bottonPanel;
 
 
-    void addTitle(ArrayList<TodoTitle> list){
-        TodoTitle todotitle = new TodoTitle();
+    void addTitle(ArrayList<TodoTitle> list,Container content){
+        TodoList todolist = new TodoList();
+        TodoTitle todotitle = new TodoTitle(todolist);
         listArea.add(todotitle);
         listArea.updateUI();
         list.add(0,todotitle);
+        content.add(todolist,BorderLayout.CENTER);
+
     }
     void pushDelete(){
         for(TodoTitle todotitle:listList){
             if(todotitle.checkBox.isSelected()){
                 todotitle.setVisible(false);
+                todotitle.todolist.setVisible(false);
                 //cardList.remove(card);
             }
         }

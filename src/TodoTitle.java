@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 
 
 public class TodoTitle extends JPanel {
-    TodoTitle() {
+    TodoTitle(TodoList todolist) {
+        this.todolist = todolist;
         main_panel = new JPanel();
         change_panel = new JPanel();
 
@@ -26,6 +27,7 @@ public class TodoTitle extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modeChange("clickDefine");
+                todolist.listTitleLabel.setText(title_label.getText());
             }
         });
 
@@ -35,6 +37,11 @@ public class TodoTitle extends JPanel {
                 modeChange("clickEdit");
             }
         });
+
+
+
+
+
 
 
 
@@ -59,6 +66,7 @@ public class TodoTitle extends JPanel {
 
     JPanel main_panel;
     JPanel change_panel;
+    TodoList todolist;
 
     void modeChange(String mode) {
         switch (mode) {
