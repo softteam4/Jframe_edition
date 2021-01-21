@@ -87,11 +87,12 @@ public class Base extends JFrame{
 
     void addTitle(ArrayList<TodoTitle> list,Container content){
         TodoList todolist = new TodoList();
-        TodoTitle todotitle = new TodoTitle(todolist);
+        TodoTitle todotitle = new TodoTitle(todolist,this);
         listArea.add(todotitle);
         listArea.updateUI();
         list.add(0,todotitle);
         content.add(todolist,BorderLayout.CENTER);
+        switchList(todotitle);
 
     }
     void pushDelete(){
@@ -100,6 +101,23 @@ public class Base extends JFrame{
                 todotitle.setVisible(false);
                 todotitle.todolist.setVisible(false);
                 //cardList.remove(card);
+            }
+        }
+    }
+
+    void switchList(TodoTitle todotitle){
+        for(TodoTitle card:listList){
+            if(card==todotitle){
+                todotitle.todolist.setVisible(true);
+                todotitle.setBackground(Color.cyan);
+                todotitle.main_panel.setBackground(Color.cyan);
+                todotitle.change_panel.setBackground(Color.cyan);
+            }
+            else{
+                card.todolist.setVisible(false);
+                card.setBackground(Color.gray);
+                card.main_panel.setBackground(Color.gray);
+                card.change_panel.setBackground(Color.gray);
             }
         }
     }

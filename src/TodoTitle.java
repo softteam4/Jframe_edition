@@ -1,13 +1,18 @@
 import javax.swing.*;
+import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class TodoTitle extends JPanel {
-    TodoTitle(TodoList todolist) {
+    TodoTitle(TodoList todolist,Base base) {
         this.todolist = todolist;
+        this.base = base;
+
+
         main_panel = new JPanel();
         change_panel = new JPanel();
 
@@ -35,6 +40,15 @@ public class TodoTitle extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modeChange("clickEdit");
+            }
+        });
+        it =this;
+
+        title_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                base.switchList(it);
             }
         });
 
@@ -67,6 +81,8 @@ public class TodoTitle extends JPanel {
     JPanel main_panel;
     JPanel change_panel;
     TodoList todolist;
+    Base base;
+    TodoTitle it;
 
     void modeChange(String mode) {
         switch (mode) {
