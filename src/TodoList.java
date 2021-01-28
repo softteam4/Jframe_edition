@@ -27,10 +27,14 @@ public class TodoList extends JPanel {
             }
         });
 
+        //タイトルについて
+        listTitleLabel.setFont(new Font("Alien",Font.PLAIN, 36));
 
 
         //カードについて
         cardArea = new JPanel();
+        cardArea.setLayout(new AfYLayout());
+
         cardList = new ArrayList<>();
 
 
@@ -40,6 +44,12 @@ public class TodoList extends JPanel {
         titlePanel.add(deleteButton);
         this.add(titlePanel,BorderLayout.NORTH);
         this.add(cardArea,BorderLayout.CENTER);
+
+        Dimension size = cardArea.getPreferredSize();
+        if(size == null)
+            size = new Dimension(0,0);
+        size.width = 50;
+        cardArea.setPreferredSize(size);
 
     }
 
@@ -56,7 +66,7 @@ public class TodoList extends JPanel {
 
     void pushAdd(ArrayList<Card> cardList){
         Card cardPanel = new Card();
-        cardArea.add(cardPanel);
+        cardArea.add(cardPanel, "50px");
         cardArea.updateUI();
         cardList.add(0,cardPanel);
     }

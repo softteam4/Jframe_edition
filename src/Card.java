@@ -20,8 +20,6 @@ public class Card extends JPanel {
         editButton = new JButton("編集");
         editButton.setVisible(false);
 
-
-
         checkBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

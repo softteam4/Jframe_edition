@@ -37,6 +37,8 @@ public class Base extends JFrame{
 
         //タイトル
         menuLabel = new JLabel("マイリスト");
+        menuLabel.setFont(new Font("MS ゴシック", Font.PLAIN, 24));
+        menuLabel.setForeground(Color.BLACK);
         menuPanel.add(menuLabel, BorderLayout.NORTH);
 
         //タイトル追加ボタン

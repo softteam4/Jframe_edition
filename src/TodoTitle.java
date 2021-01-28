@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 
 public class TodoTitle extends JPanel {
-    TodoTitle(TodoList todolist,Base base) {
+    TodoTitle(TodoList todolist, Base base) {
         this.todolist = todolist;
         this.base = base;
 
